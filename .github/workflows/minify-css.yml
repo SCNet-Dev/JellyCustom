@@ -2,7 +2,7 @@ name: Minify CSS
 on:
   push:
     paths:
-      - 'CSS/*.css'  # Déclenche uniquement si un fichier CSS dans le dossier CSS/ est modifié
+      - 'CSS/*.css'
 jobs:
   minify:
     runs-on: ubuntu-latest
@@ -11,16 +11,19 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 24  # Utilise Node 24 pour éviter les avertissements
+          node-version: 24
 
-      - name: Install cssnano-cli
-        run: npm install -g cssnano-cli
+      - name: Install clean-css-cli
+        run: npm install -g clean-css-cli
 
       - name: Create output directory
-        run: mkdir -p CSS/Min  # Crée le dossier CSS/Min/ s'il n'existe pas
+        run: mkdir -p CSS/Min
 
       - name: Minify CSS files
-        run: cssnano --out-dir CSS/Min/ CSS/*.css
+        run: |
+          for file in CSS/*.css; do
+            cleancss -o CSS/Min/"$(basename "$file" .css).min.css" "$file"
+          done
 
       - name: Commit minified files
         run: |
