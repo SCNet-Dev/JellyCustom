@@ -1,0 +1,1040 @@
+/* ==========================================================================
+   Jellyfin Custom CSS
+   Dernière modif : 2026-08-06
+   Dépendances : Enhanced Jellfyfin
+
+   SOMMAIRE
+   0. TODO
+   1. THEME
+   2. INTERFACE GÉNÉRALE
+   3. MODE AFFICHE
+   4. MODE VIGNETTE
+   5. MODE LISTE
+   6. MODE BANNIERE
+   7. MOBILE
+   8. TELEVISION
+   
+   ========================================================================== */
+
+
+/* =================================================
+   📌 0. TO-DO
+   ================================================= */
+/*
+    - Voir pour affichage mode Bannière
+	- Voir pour affichage mode liste (couleur et taille icone notation, apparence des bp)
+*/
+/* =================================================
+   📌 1. THEME
+   ================================================= */
+
+/* Import du thème ElegantFin */
+@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+
+/* ==================================================
+   🌐 2. INTERFACE GÉNÉRALE
+   ================================================== */
+
+/* Masque les boutons "Lecture aléatoire" et "Tout lire" */
+.btnShuffle, .btnPlayAll { display: none !important; }
+
+/* BP Menu - Taille et apparence */
+.more_vert {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	height: clamp(22px, 4.5vw, 30px) !important;
+	width: clamp(22px, 4.5vw, 30px) !important;
+	border-radius: 50% !important;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.4) !important;
+	background-color: rgba(250, 250, 250, 0.8) !important;
+	color: #000000 !important;
+	border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* BP Menu - Effet au survol */
+.more_vert:hover:not(.detailButton-content *) {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+	transition: .2s;
+}
+
+/* BP Menu - Taille dans fiche détail */
+.btnMoreCommands  {
+	width: 43.6px !important;
+	height: 43.6px !important;
+}
+
+/* BP Menu - Masqué sur icone acteur */
+.personCard .cardOverlayButton-br { display: none !important; }
+
+/* BP Menu - Position sur cover */
+.layout-desktop .cardOverlayButton-br, [dir="ltr"].layout-desktop .cardOverlayButton-br {
+	bottom: .5em !important;
+	right: .5em !important;
+}
+
+/* BP Lecture - Apparence */
+.cardOverlayContainer > .cardOverlayFab-primary, .listItemImageButton {
+	background-color: #1f50bd !important;
+	border: 1px solid rgba(255, 255, 255, 0.2) !important;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.4) !important;
+}
+
+/* BP Lecture - Apparence sur fiche détail */
+.btnPlay.detailButton {
+	background-color: #1f50bd !important;
+	border: 1px solid rgba(255, 255, 255, 0.2) !important;
+	color: #fff !important;
+}
+
+/* BP Lecture - Effet au hover sur fiche détail */
+.btnPlay.detailButton:hover {
+	background-color: #1f50bd !important;
+	border: 1px solid rgba(255, 255, 255, 0.2) !important;
+	color: #fff !important;
+	transform: scale(1.1);
+	transition: .2s;
+}
+
+/* BP Lecture - Position sur cover */
+.cardOverlayContainer > .cardOverlayFab-primary {
+	bottom: calc(var(--overlayPlayButtonPosition) - 2em);
+	left: calc(var(--overlayPlayButtonPosition) - 2em);
+}
+
+/* Personnalisation du marquage comme lu et compte de vidéos */
+.playedIndicator { background: #1f50bd!important; }
+
+/* Masque l'indicateur de fichier restant à lire */
+.countIndicator { display: none; }
+
+/* Masque l'indicateur de "Lu" au survol */
+.card:hover .playedIndicator { opacity: 0; }
+
+/* Apparence des boutons de la page détail */
+.playstatebutton-icon-played {
+	color: #1f50bd !important;
+	font-weight: 800 !important;
+	font-size: 2em !important;
+}
+.playstatebutton-icon-unplayed {
+	font-weight: 600 !important;
+	font-size: 2em !important;
+}
+.favorite { font-weight: 600 !important; }
+.detailButton:not(.btnPlay) {
+	backdrop-filter: none;
+	background: transparent;
+	border-color: transparent;
+	border-radius: 50%;
+	color: var(--textColor);
+	margin: .5em !important;
+	padding: .6em !important;
+	height: 2.5em !important;
+	width: 2.5em !important;
+}
+.detailButton-icon { font-variation-settings: "FILL" 1, "GRAD" 0 !important; }
+.detailButton-icon:not(.play_arrow) { font-variation-settings: "FILL" 0, "GRAD" 0 !important; }
+
+/* Annulation de l'une des 2 mise à l'échelle */
+.card-hoverable:hover .cardImageContainer { transform: scale(1) !important;}
+
+/* ==================================================
+   📌 3. MODE AFFICHE
+   ================================================== */
+
+/* Sommaires sous-sections :
+   🟣 Général
+   🔴 Overlay Language
+   🟢 Overlay Genre
+   🟠 Genre Personnalisés
+   🔵 Overlay Résolution
+   🟡 Overlay Notation
+*/
+
+/* 🟣 Général -------------------------------------- */
+
+/* Désactivation des overlay si c'est une collection */
+.card[data-type="BoxSet"] .je-tag-host { display : none !important; }
+
+/* 🔴 Overlay Language ----------------------------- */
+
+/* Position, taille et apparence */
+.language-overlay-container {
+	top: 0.625em !important;
+	left: 0.625em !important;
+	right: auto !important;
+	bottom: auto !important;
+	display: flex !important;
+	overflow: hidden !important;
+	align-items: center !important;
+	justify-content: center !important;
+	height: 2em !important;
+	width: 2em !important;
+	border-radius: 50% !important;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.4) !important;
+	background-color: #fff !important;
+	border: 0.06em solid #fff !important;
+	padding:0 !important;
+	font-size: 80%;
+	opacity: 0;
+}
+
+/* Affiche les langues au survol */
+.card:hover .language-overlay-container {
+	opacity: 1;
+	transform: scale(1.01) !important;
+}
+
+/* Dimensions du drapeau */
+.language-flag {
+	max-width: 99% !important;
+	max-height: 99% !important;
+	width: auto !important;
+	height: 100% !important;
+	transform: none !important;
+}
+
+/* 🟢 Overlay Genre -------------------------------- */
+
+/* Position, taille et apparence */
+.genre-overlay-container {
+	position: static !important;
+	contain: none !important;
+	top: auto !important;
+	right: auto !important;
+	left: auto !important;
+	bottom: auto !important;
+	display: flex !important;
+	opacity: 0; 
+}
+
+/* Affiche les genres au survol */
+.card:hover .genre-overlay-container { opacity: 1; }
+
+/* Tous les icones sont superposées au même endroit */
+.genre-tag {
+	position: absolute !important;
+	top: 0.625em !important;
+	right: 0.625em !important;
+	left: auto !important;
+	bottom: auto !important;
+	height: 2em !important;
+	width: 2em !important;
+	border-radius: 50% !important;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.4) !important;
+	background-color: #fff !important;
+	border: 0.06em solid #fff !important;
+	color: #000 !important;
+	padding:0 !important;
+	font-size: 80% !important;
+	opacity: 0;
+}
+
+/* Hors survol : seul le 1er genre reste visible et fixe */
+.genre-tag:first-child { opacity: 1; }
+
+/* Slideshow - 2 genres → cycle en 2 phases (3s) */
+.card:hover .genre-tag:nth-child(1):nth-last-child(2),
+.card:hover .genre-tag:nth-child(2):nth-last-child(1) {
+	animation: genre-cycle-2 3s steps(1, end) infinite;
+}
+.card:hover .genre-tag:nth-child(1):nth-last-child(2) {
+	animation-delay: 0s;
+}
+.card:hover .genre-tag:nth-child(2):nth-last-child(1) {
+	animation-delay: -1.5s;
+}
+@keyframes genre-cycle-2 {
+	0%, 49.9%  { opacity: 1; }
+	50%, 100%  { opacity: 0; }
+}
+
+/* Slideshow - 3 genres → cycle en 3 phases (4.5s) */
+.card:hover .genre-tag:nth-child(1):nth-last-child(3),
+.card:hover .genre-tag:nth-child(2):nth-last-child(2),
+.card:hover .genre-tag:nth-child(3):nth-last-child(1) {
+	animation: genre-cycle-3 4.5s steps(1, end) infinite;
+}
+.card:hover .genre-tag:nth-child(1):nth-last-child(3) {
+	animation-delay: 0s;
+}
+.card:hover .genre-tag:nth-child(2):nth-last-child(2) {
+	animation-delay: -3s;
+}
+.card:hover .genre-tag:nth-child(3):nth-last-child(1) {
+	animation-delay: -1.5s;
+}
+@keyframes genre-cycle-3 {
+	0%, 33.32%   { opacity: 1; }
+	33.33%, 100% { opacity: 0; }
+}
+
+/* Position, taille et apparence du texte */
+.genre-tag .genre-text {
+	position: absolute;
+	top: 100%;
+	right: 50%;
+	background : none !important;
+	border: none !important;
+	box-shadow: none !important;
+	color: #fff !important;
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4),
+				  1px -1px 0 rgba(0, 0, 0, 0.4),
+				 -1px 1px 0 rgba(0, 0, 0, 0.4),
+				  1px 1px 0 rgba(0, 0, 0, 0.4);
+	font-size: 175%;
+	font-weight: 1000;
+	margin-top: 4px;
+	text-transform: uppercase;
+	transform: translateX(50%)  rotate(180deg);
+	line-height: .6;
+	padding-top : 4px;
+	padding-bottom : 4px;
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+}
+
+/* Anneau de position sur l'icône */
+.genre-tag::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: 50%;
+	pointer-events: none;
+	background: conic-gradient(rgba(0, 0, 0, 0.5) 0deg var(--genre-progress, 0deg), transparent var(--genre-progress, 0deg) 360deg);
+	-webkit-mask: radial-gradient(farthest-side, transparent 80%, rgba(0, 0, 0, 0.5) 80%);
+	        mask: radial-gradient(farthest-side, transparent 80%, rgba(0, 0, 0, 0.5) 80%);
+}
+
+/* Anneau - Mapping position → 3 genres */
+.genre-tag:nth-child(1):not(:only-child) { --genre-progress: 118.8deg; } 
+.genre-tag:nth-child(2)					 { --genre-progress: 237.6deg; } 
+.genre-tag:nth-child(3)					 { --genre-progress: 360deg; } 
+
+/* Anneau - Mapping position → 2 genres */
+.genre-tag:nth-child(1):nth-last-child(2) { --genre-progress: 180deg; }
+.genre-tag:nth-child(2):nth-last-child(1) {	--genre-progress: 360deg; }
+
+/* 🟠 Genres Personnalisés ------------------------- */
+
+/* Genre "Anticipation" */
+.genre-tag[title="Anticipation" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Anticipation" i] .material-symbols-outlined::after {
+	content: "drone_2";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Biopic" */
+.genre-tag[title="Biopic" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Biopic" i] .material-symbols-outlined::after {
+	content: "person";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Cape & Épée" */
+.genre-tag[title="Cape & Épée" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Cape & Épée" i] .material-symbols-outlined::after {
+	content: "swords";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Casse" */
+.genre-tag[title="Casse" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Casse" i] .material-symbols-outlined::after {
+	content: "attach_money";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Catastrophe" */
+.genre-tag[title="Catastrophe" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Catastrophe" i] .material-symbols-outlined::after {
+	content: "cyclone";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Course" */
+.genre-tag[title="Course" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Course" i] .material-symbols-outlined::after {
+	content: "sports_motorsports";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Crime" */
+.genre-tag[title="Crime" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Crime" i] .material-symbols-outlined::after {
+	content: "gavel";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Documentaire" */
+.genre-tag[title="Documentaire" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Documentaire" i] .material-symbols-outlined::after {
+	content: "article";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Espionnage" */
+.genre-tag[title="Espionnage" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Espionnage" i] .material-symbols-outlined::after {
+	content: "visibility";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Fantaisy" */
+.genre-tag[title="Fantaisy" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Fantaisy" i] .material-symbols-outlined::after {
+	content: "star_shine";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Gore" */
+.genre-tag[title="Gore" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Gore" i] .material-symbols-outlined::after {
+	content: "18_up_rating";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Humour" */
+.genre-tag[title="Humour" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Humour" i] .material-symbols-outlined::after {
+	content: "mood";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Isekai" */
+.genre-tag[title="Isekai" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Isekai" i] .material-symbols-outlined::after {
+	content: "captive_portal";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Jeu Vidéo" */
+.genre-tag[title="Jeu Vidéo" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Jeu Vidéo" i] .material-symbols-outlined::after {
+	content: "stadia_controller";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Médiéval" */
+.genre-tag[title="Médiéval" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Médiéval" i] .material-symbols-outlined::after {
+	content: "castle";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Militaire" */
+.genre-tag[title="Militaire" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Militaire" i] .material-symbols-outlined::after {
+	content: "military_tech";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Musical" */
+.genre-tag[title="Musical" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Musical" i] .material-symbols-outlined::after {
+	content: "music_note";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Péplum" */
+.genre-tag[title="Péplum" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Péplum" i] .material-symbols-outlined::after {
+	content: "account_balance";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Policier" */
+.genre-tag[title="Policier" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Policier" i] .material-symbols-outlined::after {
+	content: "local_police";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Post-Apo" */
+.genre-tag[title="Post-Apo" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Post-Apo" i] .material-symbols-outlined::after {
+	content: "public_off";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Super Héro" */
+.genre-tag[title="Super Héro" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Super Héro" i] .material-symbols-outlined::after {
+	content: "domino_mask";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Wuxia" */
+.genre-tag[title="Wuxia" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Wuxia" i] .material-symbols-outlined::after {
+	content: "temple_buddhist";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* 🔵 Overlay Résolution --------------------------- */
+
+/* Position, taille et apparence */
+.quality-overlay-container {
+	bottom: .525em !important;
+	left: 50% !important;
+	right: auto !important;
+	transform: translateX(-50%) !important;
+	align-items: center !important;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+	height: 2em;
+}
+
+/* Affiche la résolution au survol */
+.card:hover .quality-overlay-container { opacity: 1; }
+
+/* Masque le texte de résolution original */
+.resolution {
+	font-size: 0 !important;
+	line-height: 0 !important;
+}
+
+/* Affiche le texte de remplacement */
+.resolution::after {
+	font-size: clamp(10px, 2vw, 13px) !important;
+	line-height: normal;
+	color: #fff !important;
+}
+
+/* Textes de remplacement par résolution */
+.resolution[data-quality="8K"]::after      { content: "8K"; }
+.resolution[data-quality="4K"]::after      { content: "UHD"; }
+.resolution[data-quality="1080p"]::after   { content: "FHD"; }
+.resolution[data-quality="720p"]::after    { content: "HD"; }
+.resolution[data-quality="480p"]::after    { content: "SD"; }
+.resolution[data-quality="LOW-RES"]::after { content: "SD"; }
+
+/* Couleurs de fond par résolution */
+.quality-overlay-container .quality-overlay-label[data-quality="8K"]      { background-color: #000000 !important; }
+.quality-overlay-container .quality-overlay-label[data-quality="4K"]      { background-color: #579d1c !important; }
+.quality-overlay-container .quality-overlay-label[data-quality="1080p"]   { background-color: #0084d1 !important; }
+.quality-overlay-container .quality-overlay-label[data-quality="720p"]    { background-color: #ff950e !important; }
+.quality-overlay-container .quality-overlay-label[data-quality="480p"]    { background-color: #c5000b !important; }
+.quality-overlay-container .quality-overlay-label[data-quality="LOW-RES"] { background-color: #c5000b !important; }
+
+/* 🟡 Overlay Notation ----------------------------- */
+
+/* Positionnement et affichage des tags de notation    */
+.rating-overlay-container {
+	position: absolute;
+	top: 0.625em !important;
+	left: 50% !important;
+	right: auto !important;
+	margin-top: 0 !important;
+	transform: translateX(-50%) !important;
+	align-items: center !important;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+/* Affiche la notation au survol */
+.card:hover .rating-overlay-container {	opacity: 1; }
+
+/* Espacement entre icone et texte */
+.rating-tag { gap: 3px !important; }
+
+/* Masque la notation des critique (rottentomatoes) */
+.rating-tag-critic { display: none !important; }
+
+/* Apparence notation TheMovieDB */
+.rating-tag-tmdb {
+	color: #000 !important;
+	background-color: #fff !important;
+	padding: 3px 4px !important;
+}
+
+/* ==================================================
+   📌 4. MODE VIGNETTE
+   ================================================== */
+
+/* Sommaires sous-sections :
+   🟢 Overlay Genre
+*/
+
+/* 🟢 Overlay Genre -------------------------------- */
+
+/* Texte masqué */
+.overflowBackdropCard .genre-tag .genre-text,
+.backdropCard .genre-tag .genre-text {
+	display: none;
+}
+
+/* Tous les tags visibles en permanence */
+.overflowBackdropCard .genre-tag,
+.backdropCard .genre-tag {
+	opacity: 1 !important;
+	animation: none !important;
+	pointer-events: auto !important;
+}
+
+/* Anneau de progression masqué */
+.overflowBackdropCard .genre-tag::before,
+.backdropCard .genre-tag::before {
+	display: none;
+}
+
+/* Empilement vertical des icones */
+.overflowBackdropCard .genre-tag:nth-child(1),
+.backdropCard .genre-tag:nth-child(1) {
+	top: 0.625em !important;
+}
+.overflowBackdropCard .genre-tag:nth-child(2),
+.backdropCard .genre-tag:nth-child(2) {
+	top: calc(0.625em + 2.6em) !important;
+}
+.overflowBackdropCard .genre-tag:nth-child(3),
+.backdropCard .genre-tag:nth-child(3) {
+	top: calc(0.625em + 5.2em) !important;
+}
+
+/* Infobulle stylée (texte du genre) au survol de l'icône, réutilise
+   l'attribut title déjà présent nativement sur .genre-tag. */
+.overflowBackdropCard .genre-tag:hover::after,
+.backdropCard .genre-tag:hover::after {
+	content: attr(title);
+	position: absolute;
+	top: 50%;
+	right: 100%;
+	transform: translateY(-50%);
+	margin-right: 0.5em;
+	padding: 0.3em 0.6em;
+	background: #fff;
+	color: #000;
+	font-size: 0.75em;
+	text-transform: uppercase !important;
+	white-space: nowrap;
+	border-radius: 4px;
+	pointer-events: none;
+	z-index: 1000;
+}
+
+/* ==================================================
+   📌 5. MODE LISTE
+   ================================================== */
+
+/* Sommaires sous-sections :
+   🟣 Général
+   🟡 Overlay Notation
+*/
+
+/* 🟣 Général ----------------------------------- */
+
+/* Apparence des boutons */
+.listItemButton .material-icons { font-variation-settings: "FILL" 0, "GRAD" 0 !important; }
+
+/* Taille et marge interne du bouton favori */
+.listItemButton .favorite {
+  font-size: 1.6em;
+  padding: .2em;
+}
+
+/* 🟡 Overlay Notation ----------------------------- */
+
+/* Taille et couleur icone */
+.starIcon {
+	-webkit-text-fill-color: #ffc107 ;
+	font-size: 1.25em;
+}
+
+/* ==================================================
+   📌 6. MODE BANNIERE
+   ================================================== */
+
+/* Sommaires sous-sections :
+   🟣 Général
+   🔴 Overlay Language
+   🟢 Overlay Genre
+   🟠 Genre Personnalisés
+   🔵 Overlay Résolution
+   🟡 Overlay Notation
+*/
+
+
+
+/* ==================================================
+   📞 7. MOBILE
+   ================================================== */
+
+/* Sommaires sous-sections :
+   🟣 Général
+   🔴 Language
+   🟢 Genre
+   🔵 Résolution
+   🟡 Notation
+*/
+
+/* 🟣 Général ----------------------------------- */
+
+/* Masque les boutons sur les covers */
+.layout-mobile .cardOverlayButton {	display: none !important; }
+
+/* 🔴 Language ---------------------------------- */
+
+/* Position et taille */
+.layout-mobile .language-overlay-container {
+	top: 0.4em !important;
+	left: 0.4em !important;
+	height: 1.75em !important;
+	width: 1.75em !important;
+}
+
+/* 🟢 Genre ------------------------------------- */
+
+/* Position et taille (s'applique à tous les tags superposés) */
+.layout-mobile .genre-tag {
+	top: 0.4em !important;
+	right: 0.4em !important;
+	height: 1.75em !important;
+	width: 1.75em !important;
+}
+.layout-mobile .genre-text {
+	font-size: 115% !important;
+	padding-top : 1px;
+}
+
+/* Mode Vignette - Empilement vertical des icones */
+.layout-mobile .overflowBackdropCard .genre-tag:nth-child(1),
+.layout-mobile .backdropCard .genre-tag:nth-child(1) {
+	top: 0.4em !important;
+}
+.layout-mobile .overflowBackdropCard .genre-tag:nth-child(2),
+.layout-mobile .backdropCard .genre-tag:nth-child(2) {
+	top: calc(0.4em + 2.4em) !important;
+}
+.layout-mobile .overflowBackdropCard .genre-tag:nth-child(3),
+.layout-mobile .backdropCard .genre-tag:nth-child(3) {
+	top: calc(0.4em + 4.8em) !important;
+}
+
+/* Mode Vignette - Infobulle stylée (texte du genre) au survol de l'icône, réutilise
+   l'attribut title déjà présent nativement sur .genre-tag. */
+.layout-mobile .overflowBackdropCard .genre-tag:hover::after,
+.layout-mobile .backdropCard .genre-tag:hover::after {
+	line-height: 0.9;
+}
+
+/* 🔵 Résolution -------------------------------- */
+
+/* Position et taille */
+.layout-mobile .quality-overlay-container {
+	bottom: 0px !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+/* Hauteur ligne du texte */
+.layout-mobile .resolution::after {	line-height: 14px; }
+
+/* 🟡 Notation ---------------------------------- */
+
+/* Position et taille */
+.layout-mobile .rating-overlay-container {
+	height: 2em;
+	top: 0.4em !important;
+}
+
+/* Taille texte */
+.layout-mobile .rating-text { font-size: 85% !important; }
+
+/* Hauteur du tag */
+.layout-mobile .rating-tag {
+	min-height: 10px !important;
+	line-height: 14px;
+}
+
+/* Taille texte */
+.layout-mobile .rating-star-icon { font-size: 85% !important; }
+
+/* Marge interne du tag TheMovieDB */
+.layout-mobile .rating-tag-tmdb { padding: 3px 4px !important; }
+
+/* ==================================================
+   📺 8. TELEVISION
+   ================================================== */
+
+/* Sommaires sous-sections :
+   🟣 Général
+   🔴 Language
+   🟢 Genre
+   🔵 Résolution
+   🟡 Notation
+*/
+
+/* 🟣 Général ---------------------------------- */
+
+/* Masque l'indicateur de lecture au survol */
+.layout-tv .card:focus-within .playedIndicator { opacity: 0; }
+
+/* Couleur du bouton marquer comme lu en page des détails */
+.layout-tv .playstatebutton-played:focus-within .playstatebutton-icon-played { color: #e1a900 !important; }
+
+/* 🔴 Language ---------------------------------- */
+
+/* Affichage sur focus */
+.layout-tv .card:focus-within .language-overlay-container  { opacity: 1; }
+
+/* Taille */
+.layout-tv .language-overlay-container {
+	height: 1.8em !important;
+	width: 1.8em !important;
+}
+
+/* 🟢 Genre ------------------------------------- */
+
+/* Affichage sur focus */
+.layout-tv .card:focus-within .genre-overlay-container,
+.layout-tv .card:focus-within .genre-text {
+	opacity: 1;
+}
+
+/* Taille de l'icone (s'applique à tous les tags superposés) */
+.layout-tv .genre-tag {
+	height: 1.8em !important;
+	width: 1.8em !important;
+}
+
+/* Taille du texte genre*/
+.layout-tv .genre-text { font-size: 150% !important; }
+
+
+/* Slideshow sur focus - 2 genres → cycle en 2 phases (3s) */
+.layout-tv .card:focus-within .genre-tag:nth-child(1):nth-last-child(2),
+.layout-tv .card:focus-within .genre-tag:nth-child(2):nth-last-child(1) {
+	animation: genre-cycle-2 3s steps(1, end) infinite;
+}
+.layout-tv .card:focus-within .genre-tag:nth-child(1):nth-last-child(2) { animation-delay: 0s; }
+.layout-tv .card:focus-within .genre-tag:nth-child(2):nth-last-child(1) { animation-delay: -1.5s; }
+
+/* Slideshow sur focus - 3 genres → cycle en 3 phases (4.5s) */
+.layout-tv .card:focus-within .genre-tag:nth-child(1):nth-last-child(3),
+.layout-tv .card:focus-within .genre-tag:nth-child(2):nth-last-child(2),
+.layout-tv .card:focus-within .genre-tag:nth-child(3):nth-last-child(1) {
+	animation: genre-cycle-3 4.5s steps(1, end) infinite;
+}
+.layout-tv .card:focus-within .genre-tag:nth-child(1):nth-last-child(3) { animation-delay: 0s; }
+.layout-tv .card:focus-within .genre-tag:nth-child(2):nth-last-child(2) { animation-delay: -3s; }
+.layout-tv .card:focus-within .genre-tag:nth-child(3):nth-last-child(1) { animation-delay: -1.5s; }
+
+/* 🔵 Résolution -------------------------------- */
+
+/* Affichage sur focus */
+.layout-tv .card:focus-within .quality-overlay-container  {	opacity: 1; }
+
+/* Position */
+.layout-tv .quality-overlay-container {
+	bottom: 0.25em !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+/* 🟡 Notation ---------------------------------- */
+
+/* Affichage sur focus */
+.layout-tv .card:focus-within .rating-overlay-container { opacity: 1; }
