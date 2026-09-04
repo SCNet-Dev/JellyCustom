@@ -543,6 +543,38 @@
 	font-size: inherit;
 }
 
+/* Genre "Judiciaire" */
+.genre-tag[title="Judiciaire" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Judiciaire" i] .material-symbols-outlined::after {
+	content: "balance";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Médical" */
+.genre-tag[title="Médical" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Médical" i] .material-symbols-outlined::after {
+	content: "emergency";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
 /* Genre "Médiéval" */
 .genre-tag[title="Médiéval" i] .material-symbols-outlined {
 	position: relative;
@@ -639,6 +671,22 @@
 	font-size: inherit;
 }
 
+/* Genre "Sentai" */
+.genre-tag[title="Sentai" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Sentai" i] .material-symbols-outlined::after {
+	content: "diversity_3";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
 /* Genre "Super Héro" */
 .genre-tag[title="Super Héro" i] .material-symbols-outlined {
 	position: relative;
@@ -646,6 +694,22 @@
 }
 .genre-tag[title="Super Héro" i] .material-symbols-outlined::after {
 	content: "domino_mask";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #000;
+	font-size: inherit;
+}
+
+/* Genre "Tranche De Vie" */
+.genre-tag[title="Tranche De Vie" i] .material-symbols-outlined {
+	position: relative;
+	color: transparent;
+}
+.genre-tag[title="Tranche De Vie" i] .material-symbols-outlined::after {
+	content: "nature_people";
 	position: absolute;
 	inset: 0;
 	display: flex;
