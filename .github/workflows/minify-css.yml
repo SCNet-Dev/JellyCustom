@@ -18,13 +18,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Créer le dossier de sortie
-        run: mkdir -p dist/CSS
+        run: mkdir -p CSS/Mini
 
       - name: Minifier le CSS avec Clean-CSS
-        run: npx -y clean-css-cli -o dist/CSS/Jellyfin-CSS-Custom.min.css CSS/Jellyfin-CSS-Custom.css
+        run: npx -y clean-css-cli -o CSS/Mini/Jellyfin-CSS-Custom.min.css CSS/Jellyfin-CSS-Custom.css
 
       - name: Commiter et pousser le fichier minifié
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'auto: minification du fichier CSS'
-          file_pattern: 'dist/CSS/Jellyfin-CSS-Custom.min.css'
+          file_pattern: 'CSS/Mini/Jellyfin-CSS-Custom.min.css'
