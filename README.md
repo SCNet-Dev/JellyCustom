@@ -43,6 +43,8 @@ Ce thème importe automatiquement **[ElegantFin](https://github.com/lscambo13/El
    **Tableau de bord > JS Injector.
 4. Ajoute un script, nomme-le selon ton désir et ajoute le contenu du fichier javascript.
 
+> ⚠️ **Le thème custom importe automatiquement ElegantFin. L'installation manuelle de ce dernier n'est pas nécessaire.
+> 
 ---
 
 ## 📂 Structure du dépôt
