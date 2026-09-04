@@ -1,0 +1,30 @@
+name: Minify CSS
+
+on:
+  push:
+    branches:
+      - main # Remplace par le nom de ta branche principale si c'est 'master'
+    paths:
+      - 'CSS/Jellyfin-CSS-Custom.css' # Indique ici le chemin vers ton fichier CSS d'origine
+
+jobs:
+  minify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permet à l'action de commiter la version minifiée
+
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Minifier le CSS
+        uses: cssnano/cssnano-action@v1.0.1
+        with:
+          input: 'CSS/Jellyfin-CSS-Custom.css'      # Chemin de ton fichier CSS source
+          output: 'CSS/Jellyfin-CSS-Custom.min.css' # Nom du fichier minifié généré
+
+      - name: Commiter et pousser le fichier minifié
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'auto: minification du fichier CSS'
+          file_pattern: 'CSS/Jellyfin-CSS-Custom.min.css'
