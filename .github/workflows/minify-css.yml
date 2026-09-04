@@ -19,3 +19,36 @@ jobs:
           git add dist/
           git commit -m "Auto-minified CSS [skip ci]" || echo "No changes to commit"
           git push
+
+
+name: Minify CSS
+on:
+  push:
+    paths:
+      - 'CSS/*.css'  # Déclenche uniquement si un fichier CSS dans le dossier CSS/ est modifié
+jobs:
+  minify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24  # Utilise Node 24 pour éviter les avertissements
+
+      - name: Install cssnano-cli
+        run: npm install -g cssnano-cli
+
+      - name: Create output directory
+        run: mkdir -p CSS/Min  # Crée le dossier CSS/Min/ s'il n'existe pas
+
+      - name: Minify CSS files
+        run: cssnano --out-dir CSS/Min/ CSS/*.css
+
+      - name: Commit minified files
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add CSS/Min/
+          git commit -m "Auto-minified CSS [skip ci]" || echo "No changes to commit"
+          git push
