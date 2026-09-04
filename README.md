@@ -22,7 +22,7 @@ Ce thème importe automatiquement **[ElegantFin](https://github.com/lscambo13/El
 - L'affichage des métadonnées (genres, notes, etc.).
 - L'optimisation pour les écrans mobiles et TV.
 
-> 🔹 *Merci à [@lscambo13](https://github.com/lscambo13) pour son travail sur ElegantFin et à [@n00bcodr](https://github.com/n00bcodr) pour son travail sur Jellyfin Enhanced !*
+> 🔹 *Merci à [@lscambo13](https://github.com/lscambo13) pour son travail sur ElegantFin et à [@n00bcodr](https://github.com/n00bcodr) pour son travail sur Jellyfin Enhanced et Javascript Injector !*
 
 ---
 
@@ -32,11 +32,16 @@ Ce thème importe automatiquement **[ElegantFin](https://github.com/lscambo13/El
 
 ### 1. **Installer le thème CSS personnalisé**
 #### Méthode recommandée (via CDN) :
+
+1. Installe les plugins [Jellyfin Enhanced](https://github.com/n00bcodr/Jellyfin-Enhanced) et [Javascript Injector](https://github.com/n00bcodr/Jellyfin-JavaScript-Injector)
 1. Dans Jellyfin, va dans :
    **Tableau de bord > Apparence > Slogan > Code CSS personnalisé**.
 2. Ajoute la ligne suivante :
    ```css
    @import url("https://cdn.jsdelivr.net/gh/SCNet-Dev/JellyCustom@main/CSS/Min/Jellyfin-CSS-Custom.min.css");
+3. Dans Jellyfin, va dans :
+   **Tableau de bord > JS Injector.
+4. Ajoute un script, nomme-le selon ton désir et ajoute le contenu du fichier javascript.
 
 ---
 
@@ -45,5 +50,5 @@ Ce thème importe automatiquement **[ElegantFin](https://github.com/lscambo13/El
  |-----------------------|-------------------------------------------------------------------------------------------------|
  | `CSS/`                | Fichiers CSS sources pour personnaliser l'apparence de Jellyfin.                              |
  | `CSS/Min/`            | Versions minifiées des fichiers CSS (générées automatiquement via GitHub Actions).          |
- | `Javascript/`         | Plugins personnalisés ou modifiés pour Jellyfin.                                               |
+ | `Javascript/`         | Javascript.                                               |
  | `Scripts/`            | Scripts utilitaires (ex: automatisation, backup, etc.).                                      |
