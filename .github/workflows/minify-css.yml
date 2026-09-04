@@ -20,8 +20,8 @@ jobs:
       - name: Créer le dossier de sortie
         run: mkdir -p CSS/Mini
 
-      - name: Minifier le CSS avec Clean-CSS
-        run: npx -y clean-css-cli -o CSS/Mini/Jellyfin-CSS-Custom.min.css CSS/Jellyfin-CSS-Custom.css
+      - name: Minifier le CSS avec LightningCSS
+        run: npx -y lightningcss-cli --minify CSS/Jellyfin-CSS-Custom.css -o CSS/Mini/Jellyfin-CSS-Custom.min.css
 
       - name: Commiter et pousser le fichier minifié
         uses: stefanzweifel/git-auto-commit-action@v5
