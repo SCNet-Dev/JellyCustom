@@ -42,6 +42,11 @@ Ce thème importe automatiquement **[ElegantFin](https://github.com/lscambo13/El
 3. Dans Jellyfin, va dans :
    **Tableau de bord > JS Injector.
 4. Ajoute un script, nomme-le selon ton désir et ajoute le contenu du fichier javascript.
+5. Configurer Jellyfin Enhanced pour afficher les 4 types de tag et configure-les ainsi :
+   - Qualité : Emplacement en bas à droite (activer uniquement la résolution)
+   - Genre : Emplacement en haute à droite
+   - Langue : Emplacement en haut à gauche
+   - Note : Emplacement en haut à droite
 
 > ⚠️ Le thème custom importe automatiquement ElegantFin. L'installation manuelle de ce dernier n'est pas nécessaire.
 > 
