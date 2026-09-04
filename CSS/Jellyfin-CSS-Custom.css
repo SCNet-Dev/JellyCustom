@@ -5,26 +5,34 @@
 
    SOMMAIRE
    0. TODO
-   1. INTERFACE GÉNÉRALE
-   2. MODE AFFICHE
-   3. MODE VIGNETTE
-   4. MODE LISTE
-   5. MODE BANNIERE
-   6. MOBILE
-   7. TELEVISION
+   1. THEME
+   2. INTERFACE GÉNÉRALE
+   3. MODE AFFICHE
+   4. MODE VIGNETTE
+   5. MODE LISTE
+   6. MODE BANNIERE
+   7. MOBILE
+   8. TELEVISION
    
    ========================================================================== */
+
 
 /* =================================================
    📌 0. TO-DO
    ================================================= */
 /*
     - Voir pour affichage mode Bannière
-	- Voir pour affichage mode liste (couleur et taille icone notation, apparence des boutons)
+	- Voir pour affichage mode liste (couleur et taille icone notation, apparence des bp)
 */
+/* =================================================
+   📌 1. THEME
+   ================================================= */
+
+/* Import du thème ElegantFin */
+@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
 
 /* ==================================================
-   🌐 1. INTERFACE GÉNÉRALE
+   🌐 2. INTERFACE GÉNÉRALE
    ================================================== */
 
 /* Masque les boutons "Lecture aléatoire" et "Tout lire" */
@@ -133,7 +141,7 @@
 .card-hoverable:hover .cardImageContainer { transform: scale(1) !important;}
 
 /* ==================================================
-   📌 2. MODE AFFICHE
+   📌 3. MODE AFFICHE
    ================================================== */
 
 /* Sommaires sous-sections :
@@ -743,7 +751,7 @@
 }
 
 /* ==================================================
-   📌 3. MODE VIGNETTE
+   📌 4. MODE VIGNETTE
    ================================================== */
 
 /* Sommaires sous-sections :
@@ -808,7 +816,7 @@
 }
 
 /* ==================================================
-   📌 4. MODE LISTE
+   📌 5. MODE LISTE
    ================================================== */
 
 /* Sommaires sous-sections :
@@ -836,7 +844,7 @@
 }
 
 /* ==================================================
-   📌 5. MODE BANNIERE
+   📌 6. MODE BANNIERE
    ================================================== */
 
 /* Sommaires sous-sections :
@@ -851,7 +859,7 @@
 
 
 /* ==================================================
-   📞 6. MOBILE
+   📞 7. MOBILE
    ================================================== */
 
 /* Sommaires sous-sections :
@@ -948,7 +956,7 @@
 .layout-mobile .rating-tag-tmdb { padding: 3px 4px !important; }
 
 /* ==================================================
-   📺 7. TELEVISION
+   📺 8. TELEVISION
    ================================================== */
 
 /* Sommaires sous-sections :
