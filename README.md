@@ -22,18 +22,7 @@ Ce thème importe automatiquement **[ElegantFin](https://github.com/lscambo13/El
 - L'affichage des métadonnées (genres, notes, etc.).
 - L'optimisation pour les écrans mobiles et TV.
 
-> 🔹 *Merci à [@lscambo13](https://github.com/lscambo13) pour son travail sur ElegantFin !*
-> 🔹 *Merci à [@n00bcodr](https://github.com/n00bcodr) pour son travail sur Jellyfin Enhanced !*
-
----
-
-## 📂 Structure du dépôt
-   Dossier/Fichier       | Description                                                                                     |
- |-----------------------|-------------------------------------------------------------------------------------------------|
- | `CSS/`                | Fichiers CSS sources pour personnaliser l'apparence de Jellyfin.                              |
- | `CSS/Min/`            | Versions minifiées des fichiers CSS (générées automatiquement via GitHub Actions).          |
- | `Javascript/`         | Plugins personnalisés ou modifiés pour Jellyfin.                                               |
- | `Scripts/`            | Scripts utilitaires (ex: automatisation, backup, etc.).                                      |
+> 🔹 *Merci à [@lscambo13](https://github.com/lscambo13) pour son travail sur ElegantFin et à [@n00bcodr](https://github.com/n00bcodr) pour son travail sur Jellyfin Enhanced !*
 
 ---
 
@@ -48,3 +37,13 @@ Ce thème importe automatiquement **[ElegantFin](https://github.com/lscambo13/El
 2. Ajoute la ligne suivante :
    ```css
    @import url("https://cdn.jsdelivr.net/gh/SCNet-Dev/JellyCustom@main/CSS/Min/Jellyfin-CSS-Custom.min.css");
+
+---
+
+## 📂 Structure du dépôt
+   Dossier/Fichier       | Description                                                                                     |
+ |-----------------------|-------------------------------------------------------------------------------------------------|
+ | `CSS/`                | Fichiers CSS sources pour personnaliser l'apparence de Jellyfin.                              |
+ | `CSS/Min/`            | Versions minifiées des fichiers CSS (générées automatiquement via GitHub Actions).          |
+ | `Javascript/`         | Plugins personnalisés ou modifiés pour Jellyfin.                                               |
+ | `Scripts/`            | Scripts utilitaires (ex: automatisation, backup, etc.).                                      |
