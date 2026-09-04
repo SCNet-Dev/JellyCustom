@@ -21,7 +21,7 @@ jobs:
         run: mkdir -p dist/CSS
 
       - name: Minifier le CSS avec Clean-CSS
-        run: npx clean-css-cli -o dist/CSS/Jellyfin-CSS-Custom.min.css CSS/Jellyfin-CSS-Custom.css
+        run: npx -y clean-css-cli -o dist/CSS/Jellyfin-CSS-Custom.min.css CSS/Jellyfin-CSS-Custom.css
 
       - name: Commiter et pousser le fichier minifié
         uses: stefanzweifel/git-auto-commit-action@v5
