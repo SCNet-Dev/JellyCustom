@@ -101,7 +101,10 @@ button[data-action="menu"]:hover:not(.detailButton-content *) {
 }
 
 /* Personnalisation du marquage comme lu et compte de vidéos */
-.playedIndicator { background: #1f50bd!important; }
+.playedIndicator {
+  background: #1f50bd!important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
 .playedIndicator .indicatorIcon { fill:rgba(250, 250, 250, 0.8) !important; }
 
 /* Masque l'indicateur de fichier restant à lire */
