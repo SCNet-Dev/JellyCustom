@@ -22,7 +22,7 @@
    ================================================= */
 /*
     - Voir pour affichage mode Bannière
-	- Voir pour affichage mode liste (couleur et taille icone notation, apparence des boutons)
+    - Voir pour affichage mode liste (couleur et taille icone notation, apparence des boutons)
 */
 /* =================================================
    📌 1. THEME
@@ -35,25 +35,22 @@
    🌐 2. INTERFACE GÉNÉRALE
    ================================================== */
 
-/* Masque les boutons "Lecture aléatoire" et "Tout lire" */
-.btnShuffle, .btnPlayAll { display: none !important; }
-
 /* BP Menu - Taille et apparence */
-.more_vert {
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	height: clamp(22px, 4.5vw, 30px) !important;
-	width: clamp(22px, 4.5vw, 30px) !important;
-	border-radius: 50% !important;
-	box-shadow: 0 1px 4px rgba(0,0,0,0.4) !important;
-	background-color: rgba(250, 250, 250, 0.8) !important;
-	color: #000000 !important;
-	border: 1px solid rgba(255, 255, 255, 0.2) !important;
+button[data-action="menu"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: clamp(22px, 4.5vw, 30px) !important;
+  width: clamp(22px, 4.5vw, 30px) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4) !important;
+  background-color: rgba(250, 250, 250, 0.8) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 /* BP Menu - Effet au survol */
-.more_vert:hover:not(.detailButton-content *) {
+button[data-action="menu"]:hover:not(.detailButton-content *) {
 	-webkit-transform: scale(1.1);
 	transform: scale(1.1);
 	transition: .2s;
@@ -70,8 +67,8 @@
 
 /* BP Menu - Position sur cover */
 .layout-desktop .cardOverlayButton-br, [dir="ltr"].layout-desktop .cardOverlayButton-br {
-	bottom: .5em !important;
-	right: .5em !important;
+	bottom: .75em !important;
+	right: .75em !important;
 }
 
 /* BP Lecture - Apparence */
@@ -104,7 +101,11 @@
 }
 
 /* Personnalisation du marquage comme lu et compte de vidéos */
-.playedIndicator { background: #1f50bd!important; }
+.playedIndicator {
+  background: #1f50bd!important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.playedIndicator .indicatorIcon { fill:rgba(250, 250, 250, 0.8) !important; }
 
 /* Masque l'indicateur de fichier restant à lire */
 .countIndicator { display: none; }
