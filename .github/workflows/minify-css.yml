@@ -38,5 +38,7 @@ jobs:
           sleep 10
           for file in CSS/Min/*.min.css; do
             echo "Purge $file"
-            curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/$file" | tee /dev/stderr | grep -q '"status":"finished"'
+            curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/$file" \
+              | tee /dev/stderr \
+              | jq -e '.status == "finished"'
           done
