@@ -13,7 +13,6 @@
    6. MODE BANNIERE
    7. MOBILE
    8. TELEVISION
-   
    ========================================================================== */
 
 
@@ -228,6 +227,7 @@ button[data-action="menu"]:hover:not(.detailButton-content *) {
 	padding:0 !important;
 	font-size: 80% !important;
 	opacity: 0;
+        min-width: 2em !important;
 }
 
 /* Hors survol : seul le 1er genre reste visible et fixe */
