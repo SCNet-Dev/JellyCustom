@@ -32,3 +32,11 @@ jobs:
           git add CSS/Min/
           git commit -m "Auto-minified CSS [skip ci]" || echo "No changes to commit"
           git push
+
+      - name: Purge jsDelivr cache
+        run: |
+          sleep 10
+          for file in CSS/Min/*.min.css; do
+            echo "Purge $file"
+            curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/$file" | tee /dev/stderr | grep -q '"status":"finished"'
+          done
